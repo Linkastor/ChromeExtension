@@ -17,11 +17,12 @@
   "permissions": [
     "tabs",
     "http://*/*",
-    "https://*/*"
+    "https://*/*",
+    "http://crypto-js.googlecode.com/"
   ],
   "browser_action": {
       "default_icon": "images/icon-128.png",
       "default_popup": "popup.html",
       "default_title": "Post to Linkastor"
-   }
+  }
 }
