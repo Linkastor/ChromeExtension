@@ -5,12 +5,19 @@
   </head>
   <body>
   	<p>Linkastor</p>
-  	<p>Please login first</p>
-  	<p><a id="login_link" href="#">Login</a></p>
+  	<div id="login_container" style="display:none;">
+	  	<p>Please login first</p>
+	  	<p><a id="login_link" href="#">Login</a></p>
+  	</div>
+  	<div id="share_container" style="display:none;">
+  		<p>Share a link</p>
+  	</div>
   	<script type="text/javascript" src="config/config.js"></script>
   	<script type="text/javascript" src="scripts/jquery-2.1.4.min.js"></script>
+  	<script type="text/javascript" src="scripts/utils.js"></script>
   	<script type="text/javascript" src="scripts/sha1.js"></script>
 	<script type="text/javascript" src="scripts/oauth.js"></script>
+	<script type="text/javascript" src="scripts/linkastor.js"></script>
   	<script type="text/javascript" src="scripts/popup.js"></script>
   </body>
 </html>

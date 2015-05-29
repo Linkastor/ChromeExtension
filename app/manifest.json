@@ -10,19 +10,21 @@
   "default_locale": "en",
   "background": {
     "scripts": [
-      "config/config.js",
       "scripts/chromereload.js",
+      "config/config.js",
       "scripts/jquery-2.1.4.min.js",
+      "scripts/utils.js",
       "scripts/sha1.js",
       "scripts/oauth.js",
+      "scripts/linkastor.js",
       "scripts/background.js"
     ]
   },
   "permissions": [
     "tabs",
+    "storage",
     "http://*/*",
-    "https://*/*",
-    "http://crypto-js.googlecode.com/"
+    "https://*/*"
   ],
   "browser_action": {
       "default_icon": "images/icon-128.png",
