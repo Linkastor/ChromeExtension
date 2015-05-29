@@ -1,9 +1,3 @@
-'use strict';
-
-function debug_log(msg) {
-	chrome.runtime.sendMessage({context: 'debug', message: msg});
-};
-
 $(function () {
 	$('#login_link').click(function(){
 		request_token(function(token){

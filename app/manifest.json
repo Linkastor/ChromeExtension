@@ -10,7 +10,11 @@
   "default_locale": "en",
   "background": {
     "scripts": [
+      "config/config.js",
       "scripts/chromereload.js",
+      "scripts/jquery-2.1.4.min.js",
+      "scripts/sha1.js",
+      "scripts/oauth.js",
       "scripts/background.js"
     ]
   },
