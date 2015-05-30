@@ -1,6 +1,6 @@
 function oauth_header(method, url, token){
 	var timestamp = Math.round(new Date()/1000);
-	var nonce = '9cb227594dfbbd187143d0ade7ea77ea';
+	var nonce = btoa(Math.random());
 
 	var params = [{'key':'oauth_callback', 'value':oauth_callback},
 	{'key':'oauth_consumer_key', 'value':oauth_consumer_key},
