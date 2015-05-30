@@ -4,8 +4,7 @@
   "manifest_version": 2,
   "description": "__MSG_appDescription__",
   "icons": {
-    "16": "images/icon-16.png",
-    "128": "images/icon-128.png"
+    "16": "images/icon-16.png"
   },
   "default_locale": "en",
   "background": {
@@ -27,7 +26,7 @@
     "https://*/*"
   ],
   "browser_action": {
-      "default_icon": "images/icon-128.png",
+      "default_icon": "images/icon-16.png",
       "default_popup": "popup.html",
       "default_title": "Post to Linkastor"
   }
