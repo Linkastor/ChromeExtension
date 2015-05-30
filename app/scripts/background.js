@@ -16,8 +16,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 		chrome.tabs.remove(tab.id);
 		access_token(tab.url, function(callback){
 			signin(callback['oauth_token'],callback['oauth_token_secret'],function(linkastor_callback){
-				saveUser(linkastor_callback.user);
-				alert('Welcome ' + linkastor_callback.user.name + '\nPlease click on the extension again to share a link.');
+				saveUser(linkastor_callback);
+				alert('Welcome ' + linkastor_callback.name + '\nPlease click on the extension again to share a link.');
 			});
 		});
 	}
