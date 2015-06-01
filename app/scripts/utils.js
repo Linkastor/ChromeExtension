@@ -1,3 +1,7 @@
+function debug_log(msg) {   
+  chrome.runtime.sendMessage({context: 'debug', message: msg});   
+};
+
 function urlEncode(string)
 {
   var urlString = '';
@@ -73,4 +77,14 @@ function getUrlParams(url) {
         }
     }
     return urlParams
+}
+
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + s4() + s4() +
+    s4() + s4() + s4() + s4();
 }
