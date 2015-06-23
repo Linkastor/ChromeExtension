@@ -12,8 +12,8 @@ function setGroups(api_key){
 function fillForm(){
 	chrome.tabs.query({'active':true, windowId:chrome.windows.WINDOW_ID_CURRENT}, function(tabs){
 		if (tabs.length > 0) {
+			$("#share_url").text(tabs[0].url);
 			$("#share_title").val(tabs[0].title);
-			$("#share_url").val(tabs[0].url);
 		};
 	})
 }
@@ -55,9 +55,16 @@ $(function () {
       	return;
       };
 
-      share_link($("#share_title").val(), $("#share_url").val(), $("#group_selector").val(), current_user.auth_token, function(callback){
+      share_link($("#share_title").val(), $("#share_url").text(), $("#group_selector").val(), current_user.auth_token, function(callback){
       	window.close();
       })
 
     });
+  $("#open_linkastor").click(function(e){
+    e.preventDefault();
+
+    chrome.tabs.create({'url': linkastor_url + '/groups'}, function(tab) {
+
+    });
+  });
 });

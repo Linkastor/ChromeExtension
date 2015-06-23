@@ -2,34 +2,33 @@
 <html>
   <head>
     <link href="styles/popup.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
   </head>
-  <body>
-  	<p>Linkastor</p>
+  <body tabindex="1">
   	<div id="login_container" style="display:none;">
-	  	<p>Please login first</p>
-	  	<p><a id="login_link" href="#">Login</a></p>
+	  	<h1>Linkastor</h1>
+	  	<div id="login_button">
+		  	<p>Please login first</p>
+		  	<p><a id="login_link" href="#"><img src="images/sign-in-with-twitter-gray.png" alt="twitter connect" /></a></p>
+	  	</div>
   	</div>
   	<div id="share_container" style="display:none;">
-  		<p>Share a link</p>
+  		<h1>Share on <a href="#" id="open_linkastor">Linkastor</a> :</h1>
+  		<h2 id="share_url"></h2>
   		<form id="share_form">
 	  		<p>
-	  			Share in group : 
-	  			<br />
+  				<input placeholder="Title" id="share_title" type="text" />
+  			</p>
+  			<p>
+  				<!-- <textarea placeholder="Note (optional)" id="share_note" ></textarea> -->
+  			</p>
+	  		<p>
+	  			<h2>Share in group : </h2>
 	  			<select id="group_selector">
 	  			</select>
   			</p>
   			<p>
-  				Title :
-  				<br />
-  				<input id="share_title" type="text" />
-  			</p>
-  			<p>
-  				URL :
-  				<br />
-  				<input id="share_url" type="text" />
-  			</p>
-  			<p>
-  				<input type="submit" />
+  				<button id="submit" type="submit">Share</button>
   			</p>
   		</form>
   	</div>
