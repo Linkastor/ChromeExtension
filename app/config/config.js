@@ -33,3 +33,18 @@ function getSelectedGroup(callback) {
     callback(items[selected_group_id_key]);
   });
 }
+
+var group_list_key = 'com.linkastor.groups';
+
+function saveGroups(group_list) {
+  var obj = {};
+  obj[group_list_key] = group_list;
+
+  chrome.storage.local.set(obj);
+}
+
+function getGroups(callback) {
+  chrome.storage.local.get(group_list_key, function(items) {
+    callback(items[group_list_key]);
+  });
+}

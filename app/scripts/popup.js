@@ -1,20 +1,37 @@
+function selectLastSelectedGroup(){
+  getSelectedGroup(function(group_id){
+    if (group_id > 0) {
+      $("#group_selector").val(group_id);
+    }
+    else {
+      $("#group_selector").val(0);
+    }
+  });
+};
+
 function setGroups(api_key){
 	$("#group_selector").append("<option value='0'>--- SELECT A GROUP ---</option>");
 
-	get_groups(api_key, function(groups){
-		for (var i = 0 ; i < groups.length ; ++i)
-		{
-			 $("#group_selector").append("<option value='" + groups[i].id + "'>" + groups[i].name + "</option>");
-		}
+  getGroups(function(storage_groups){
+    for (var i = 0 ; i < storage_groups.length ; ++i)
+    {
+       $("#group_selector").append("<option value='" + storage_groups[i].id + "'>" + storage_groups[i].name + "</option>");
+    }
 
-    getSelectedGroup(function(group_id){
-      if (group_id > 0) {
-        $("#group_selector").val(group_id);
-      }
-      else {
-        $("#group_selector").val(0);
-      }
-    })	
+    selectLastSelectedGroup();
+  });
+
+	get_groups(api_key, function(api_groups){
+    $("#group_selector").empty();
+    $("#group_selector").append("<option value='0'>--- SELECT A GROUP ---</option>");
+    saveGroups(api_groups);
+		
+    for (var i = 0 ; i < api_groups.length ; ++i)
+    {
+       $("#group_selector").append("<option value='" + api_groups[i].id + "'>" + api_groups[i].name + "</option>");
+    }
+
+    selectLastSelectedGroup();
 	});
 }
 
