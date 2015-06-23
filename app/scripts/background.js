@@ -8,6 +8,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.context == 'debug') {
 		console.log('debug: ',request.message);	
 	};
+
+	if (request.context == 'alert') {
+		alert(request.message);
+	};
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {

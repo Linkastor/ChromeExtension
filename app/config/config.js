@@ -18,3 +18,18 @@ function getUser(callback) {
 		callback(items[user_storage_key]);
 	});
 }
+
+var selected_group_id_key = 'com.linkastor.selected_group_id';
+
+function setSelectedGroup(group_id) {
+  var obj = {};
+  obj[selected_group_id_key] = group_id;
+
+  chrome.storage.local.set(obj);
+}
+
+function getSelectedGroup(callback) {
+  chrome.storage.local.get(selected_group_id_key, function(items) {
+    callback(items[selected_group_id_key]);
+  });
+}

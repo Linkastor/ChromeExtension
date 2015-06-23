@@ -1,5 +1,5 @@
 function debug_log(msg) {   
-  chrome.runtime.sendMessage({context: 'debug', message: msg});   
+  chrome.runtime.sendMessage({context: 'debug', message: msg});
 };
 
 function urlEncode(string)

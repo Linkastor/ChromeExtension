@@ -5,7 +5,16 @@ function setGroups(api_key){
 		for (var i = 0 ; i < groups.length ; ++i)
 		{
 			 $("#group_selector").append("<option value='" + groups[i].id + "'>" + groups[i].name + "</option>");
-		}	
+		}
+
+    getSelectedGroup(function(group_id){
+      if (group_id > 0) {
+        $("#group_selector").val(group_id);
+      }
+      else {
+        $("#group_selector").val(0);
+      }
+    })	
 	});
 }
 
@@ -52,6 +61,7 @@ $(function () {
       };
 
       if ($("#group_selector").val() == 0) {
+        chrome.runtime.sendMessage({context: 'alert', message: 'Please select a group'});
       	return;
       };
 
@@ -60,6 +70,7 @@ $(function () {
       })
 
     });
+
   $("#open_linkastor").click(function(e){
     e.preventDefault();
 
@@ -67,4 +78,8 @@ $(function () {
 
     });
   });
+
+  $("#group_selector").on('change', function(){
+    setSelectedGroup(this.value);
+  })
 });
