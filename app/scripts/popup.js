@@ -98,5 +98,13 @@ $(function () {
 
   $("#group_selector").on('change', function(){
     setSelectedGroup(this.value);
-  })
+  });
+
+  $("#logout").click(function(e){
+    e.preventDefault();
+      saveUser(null);
+      setSelectedGroup(null);
+      saveGroups(null);
+      window.close();
+  });
 });
