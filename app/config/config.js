@@ -1,6 +1,6 @@
 var oauth_callback = 'http://localhost:666/callback/';
-var oauth_consumer_key = 'NwA6HpLGxsDgFhUaWpvvIV8aQ';
-var oauth_consumer_secret = 'BbsF9Bqb2sUz1h7KHyTTuIGSPLlAjuZDQ8otzvoYXQSjlbo22r';
+var oauth_consumer_key = 'kzqWOAo4EOMCb2uGPdihaHqjl';
+var oauth_consumer_secret = 'WFANcJ7WgFXQL1J1oqJZZAqaagMNkl6OHcONKNPV4hAKLG7M4y';
 
 var linkastor_url = 'https://linkastor.herokuapp.com';
 
