@@ -21,17 +21,22 @@ function setGroups(api_key){
     selectLastSelectedGroup();
   });
 
-	get_groups(api_key, function(api_groups){
-    $("#group_selector").empty();
-    $("#group_selector").append("<option value='0'>--- SELECT A GROUP ---</option>");
-    saveGroups(api_groups);
-		
-    for (var i = 0 ; i < api_groups.length ; ++i)
-    {
-       $("#group_selector").append("<option value='" + api_groups[i].id + "'>" + api_groups[i].name + "</option>");
+	Linkastor.get_groups(api_key, function(api_groups, error){
+    if (error) {
+      chrome.runtime.sendMessage({context: 'alert', message: 'Error while fetching the list of you groups. Please try again.'});
     }
+    else {
+      $("#group_selector").empty();
+      $("#group_selector").append("<option value='0'>--- SELECT A GROUP ---</option>");
+      saveGroups(api_groups);
+  		
+      for (var i = 0 ; i < api_groups.length ; ++i)
+      {
+         $("#group_selector").append("<option value='" + api_groups[i].id + "'>" + api_groups[i].name + "</option>");
+      }
 
-    selectLastSelectedGroup();
+      selectLastSelectedGroup();
+    }
 	});
 }
 
@@ -82,8 +87,13 @@ $(function () {
       	return;
       };
 
-      share_link($("#share_title").val(), $("#share_url").text(), $("#group_selector").val(), current_user.auth_token, function(callback){
-      	window.close();
+      Linkastor.share_link($("#share_title").val(), $("#share_url").text(), $("#group_selector").val(), current_user.auth_token, function(success, error){
+        if (error) {
+          chrome.runtime.sendMessage({context: 'alert', message: 'Error while posting you link. Please try again.'});
+        }
+        else {
+        	window.close();
+        }
       })
 
     });
