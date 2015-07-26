@@ -18,7 +18,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 	if (tab.url.indexOf(oauth_callback) > -1 && changeInfo.status == 'loading')
 	{
 		chrome.tabs.remove(tab.id);
-		access_token(tab.url, function(callback){
+		Oauth.access_token(tab.url, function(callback){
 			Linkastor.sign_in(callback['oauth_token'],callback['oauth_token_secret'],function(success, error){
 				if (error) 
 				{
