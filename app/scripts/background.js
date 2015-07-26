@@ -25,7 +25,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 					alert('Something went wrong. Please try again');
 				}
 				else {
-					saveUser(success);
+					Storage.saveUser(success);
 					alert('Welcome ' + success.name + '\nPlease click on the extension again to share a link.');
 				}
 			});

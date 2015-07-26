@@ -1,5 +1,5 @@
 function selectLastSelectedGroup(){
-  getSelectedGroup(function(group_id){
+  Storage.getSelectedGroup(function(group_id){
     if (group_id > 0) {
       $("#group_selector").val(group_id);
     }
@@ -12,7 +12,7 @@ function selectLastSelectedGroup(){
 function setGroups(api_key){
 	$("#group_selector").append("<option value='0'>--- SELECT A GROUP ---</option>");
 
-  getGroups(function(storage_groups){
+  Storage.getGroups(function(storage_groups){
     for (var i = 0 ; i < storage_groups.length ; ++i)
     {
        $("#group_selector").append("<option value='" + storage_groups[i].id + "'>" + storage_groups[i].name + "</option>");
@@ -28,7 +28,7 @@ function setGroups(api_key){
     else {
       $("#group_selector").empty();
       $("#group_selector").append("<option value='0'>--- SELECT A GROUP ---</option>");
-      saveGroups(api_groups);
+      Storage.saveGroups(api_groups);
   		
       for (var i = 0 ; i < api_groups.length ; ++i)
       {
@@ -53,7 +53,7 @@ $(function () {
 
 	var current_user;
 
-	getUser(function(user){
+	Storage.getUser(function(user){
 		if (user) {
 			current_user = user;
 			$('#share_container').show();
@@ -107,14 +107,14 @@ $(function () {
   });
 
   $("#group_selector").on('change', function(){
-    setSelectedGroup(this.value);
+    Storage.setSelectedGroup(this.value);
   });
 
   $("#logout").click(function(e){
     e.preventDefault();
-      saveUser(null);
-      setSelectedGroup(null);
-      saveGroups(null);
-      window.close();
+      Storage.clear(function(){
+        window.close();
+      });
+      
   });
 });
