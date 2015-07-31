@@ -7,8 +7,8 @@ var Linkastor = {
 		    success: function (data) {
 		    	callback(data.user, null);
 		    },
-		    error: function() {
-		    	callback(null, 'error');
+		    error: function(error) {
+		    	callback(null, error);
 		    }
 		});
 	},
@@ -19,8 +19,8 @@ var Linkastor = {
 		    success: function (data) {
 		    	callback(data.groups, null);
 		    },
-		    error: function() {
-		    	callback(null, 'error');
+		    error: function(error) {
+		    	callback(null, error);
 		    }
 		});
 	},
@@ -33,8 +33,8 @@ var Linkastor = {
 		    success: function (data) {
 		    	callback(data.link, null);
 		    },
-		    error: function() {
-		    	callback(null, 'error');
+		    error: function(error) {
+		    	callback(null, error);
 		    }
 		});
 	}
