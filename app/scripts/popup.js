@@ -10,7 +10,7 @@ function selectLastSelectedGroup(){
 };
 
 function setGroups(api_key){
-	$("#group_selector").append("<option value='0'>--- SELECT A GROUP ---</option>");
+	$("#group_selector").append("<option value=\"\" selected disabled>Select a Group</option>");
 
   Storage.getGroups(function(storage_groups){
     for (var i = 0 ; i < storage_groups.length ; ++i)
@@ -28,7 +28,7 @@ function setGroups(api_key){
     }
     else {
       $("#group_selector").empty();
-      $("#group_selector").append("<option value='0'>--- SELECT A GROUP ---</option>");
+      $("#group_selector").append("<option value=\"\" selected disabled>Select a Group</option>");
       Storage.saveGroups(api_groups);
   		
       for (var i = 0 ; i < api_groups.length ; ++i)
@@ -55,25 +55,14 @@ $(function () {
 	var current_user;
 
 	Storage.getUser(function(user){
-		if (user) {
-			current_user = user;
-			$('#share_container').show();
-			setGroups(user.auth_token);
-			fillForm();
-		}
-		else {
-			$('#login_container').show();
-		}
-	})
+		if (!user) {
+      window.location.replace("/login.html");
+      return;
+    }
 
-	$('#login_link').click(function(){
-		Oauth.request_token(function(token){
-			url = 'https://api.twitter.com/oauth/authenticate?' + token
-			chrome.tabs.create({'url': url}, function(tab) {
-
-			});
-		});
-		
+		current_user = user;
+		setGroups(user.auth_token);
+		fillForm();
 	});
 
 	$("#share_form").submit(function(e) {
@@ -83,18 +72,29 @@ $(function () {
       	return;
       };
 
-      if ($("#group_selector").val() == 0) {
-        $("#group_selector").css('background-color', '#FF0000');
-      	return;
-      };
+      $("#share_title_form_group").removeClass('has-error');
+      $("#group_selector_form_group").removeClass('has-error');
+
+      if (!$("#share_title").val()) {
+        $("#share_title_form_group").addClass('has-error');
+        $("#share_title").focus();
+      }
+
+      if (!$("#group_selector").val()) {
+        $("#group_selector_form_group").addClass('has-error');
+      }
+
+      if (!$("#share_title").val() || !$("#group_selector").val()) {
+        return;
+      }
 
       Linkastor.share_link($("#share_title").val(), $("#share_url").text(), $("#group_selector").val(), current_user.auth_token, function(success, error){
         if (error) {
           chrome.runtime.sendMessage({context: 'alert', message: 'Error while posting you link. Please try again.'});
         }
-        
+
       	window.close();
-      })
+      });
 
     });
 
@@ -107,8 +107,8 @@ $(function () {
   });
 
   $("#group_selector").on('change', function(){
-    if (this.value > 0) {
-      $("#group_selector").css('background-color', 'transparent');
+    if (this.value) {
+      $("#group_selector_form_group").removeClass('has-error');
       Storage.setSelectedGroup(this.value);
     };
     

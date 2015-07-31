@@ -1,0 +1,16 @@
+body {
+  width: 400px;
+  height: 384px; /* minus arrow on top */
+  text-align: center;
+  margin-top: -16px; /* minus arrow on top */
+  background-image:url('../images/background.jpg');
+  color: #FFFFFF;
+}
+
+#login_container h1 {
+  padding-top: 20px;
+}
+
+#login_button {
+  padding-top: 200px;
+}
