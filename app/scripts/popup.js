@@ -92,9 +92,8 @@ $(function () {
         if (error) {
           chrome.runtime.sendMessage({context: 'alert', message: 'Error while posting you link. Please try again.'});
         }
-        else {
-        	window.close();
-        }
+        
+      	window.close();
       })
 
     });
