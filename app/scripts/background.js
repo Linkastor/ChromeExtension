@@ -12,6 +12,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.context == 'alert') {
 		alert(request.message);
 	};
+
+	if (request.context == 'background_post') {
+		 Linkastor.share_link(request.message.title, request.message.link, request.message.group_id, request.message.api_key, function(success, error){
+        if (error) {
+          Background.alert('Error while posting you link. Please try again.');
+        }
+      });
+	}
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
@@ -22,11 +30,11 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 			Linkastor.sign_in(callback['oauth_token'],callback['oauth_token_secret'],function(success, error){
 				if (error) 
 				{
-					alert('Something went wrong. Please try again');
+					Background.alert('Something went wrong. Please try again');
 				}
 				else {
 					Storage.saveUser(success);
-					alert('Welcome ' + success.name + '\nPlease click on the extension again to share a link.');
+					Background.alert('Welcome ' + success.name + '\nPlease click on the extension again to share a link.');
 				}
 			});
 		});

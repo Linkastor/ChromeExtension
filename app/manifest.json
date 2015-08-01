@@ -13,6 +13,7 @@
       "config/config.js",
       "scripts/jquery-2.1.4.min.js",
       "scripts/utils.js",
+      "scripts/background_utils.js",
       "scripts/sha1.js",
       "scripts/oauth.js",
       "scripts/linkastor.js",

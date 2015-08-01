@@ -23,7 +23,7 @@ function setGroups(api_key){
 
 	Linkastor.get_groups(api_key, function(api_groups, error){
     if (error) {
-      chrome.runtime.sendMessage({context: 'alert', message: 'Error while fetching the list of you groups. Please try again.'});
+      Background.alert('Error while fetching the list of you groups. Please try again.');
       Storage.clear(); 
     }
     else {
@@ -88,12 +88,8 @@ $(function () {
         return;
       }
 
-      Linkastor.share_link($("#share_title").val(), $("#share_url").text(), $("#group_selector").val(), current_user.auth_token, function(success, error){
-        if (error) {
-          chrome.runtime.sendMessage({context: 'alert', message: 'Error while posting you link. Please try again.'});
-        }
-
-      	window.close();
+      Background.share_link($("#share_title").val(), $("#share_url").text(), $("#group_selector").val(), current_user.auth_token, function(){
+        window.close();
       });
 
     });
