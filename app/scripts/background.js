@@ -16,7 +16,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.context == 'background_post') {
 		 Linkastor.share_link(request.message.title, request.message.link, request.message.group_id, request.message.api_key, function(success, error){
         if (error) {
-          Background.alert('Error while posting your link. Please try again.');
+          Background.alert('Error while posting your link. Please log in again.');
+          Storage.clear();
         }
       });
 	}
