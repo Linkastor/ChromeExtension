@@ -23,7 +23,7 @@ function setGroups(api_key){
 
 	Linkastor.get_groups(api_key, function(api_groups, error){
     if (error) {
-      Background.alert('Error while fetching the list of you groups. Please try again.');
+      Background.alert('Error while fetching the list of you groups. Please log in again.');
       Storage.clear(); 
     }
     else {
