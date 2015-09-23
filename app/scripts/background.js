@@ -18,12 +18,18 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
           Storage.clear();
         }
       });
-	} 
-	else if (request.context == 'check_installed') {
-		sendResponse('Yep!');
 	}
 	else {
 		console.log('unexpected message received: ', request);
+	}
+});
+
+chrome.runtime.onMessageExternal.addListener(function(request, sender, sendResponse) {
+	if (request.context == 'check_installed') {
+		sendResponse('Yep!');
+	}
+	else {
+		console.log('unexpected external message received: ', request);
 	}
 });
 

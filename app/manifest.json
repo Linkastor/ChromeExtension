@@ -1,34 +1,41 @@
 {
-  "name": "__MSG_appName__",
-  "version": "0.0.1",
-  "manifest_version": 2,
-  "description": "__MSG_appDescription__",
-  "icons": {
-    "16": "images/icon-16.png"
-  },
-  "default_locale": "en",
-  "background": {
-    "scripts": [
-      "scripts/chromereload.js",
-      "config/config.js",
-      "scripts/jquery-2.1.4.min.js",
-      "scripts/utils.js",
-      "scripts/background_utils.js",
-      "scripts/sha1.js",
-      "scripts/oauth.js",
-      "scripts/linkastor.js",
-      "scripts/background.js"
-    ]
-  },
-  "permissions": [
-    "tabs",
-    "storage",
-    "http://*/*",
-    "https://*/*"
-  ],
-  "browser_action": {
-      "default_icon": "images/icon-16.png",
-      "default_popup": "popup.html",
-      "default_title": "Post to Linkastor"
-  }
+    "name": "__MSG_appName__",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "__MSG_appDescription__",
+    "icons": {
+        "16": "images/icon-16.png"
+    },
+    "default_locale": "en",
+    "background": {
+        "scripts": [
+            "scripts/chromereload.js",
+            "config/config.js",
+            "scripts/jquery-2.1.4.min.js",
+            "scripts/utils.js",
+            "scripts/background_utils.js",
+            "scripts/sha1.js",
+            "scripts/oauth.js",
+            "scripts/linkastor.js",
+            "scripts/background.js"
+        ]
+    },
+    "permissions": [
+        "tabs",
+        "storage",
+        "http://*/*",
+        "https://*/*"
+    ],
+    "browser_action": {
+        "default_icon": "images/icon-16.png",
+        "default_popup": "popup.html",
+        "default_title": "Post to Linkastor"
+    },
+    "externally_connectable": {
+        "matches": [
+            "*://linkastor.com/*",
+            "*://linkastor.com/*",
+            "http://localhost/*"
+        ]
+    }
 }
