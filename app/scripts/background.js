@@ -7,19 +7,23 @@ chrome.runtime.onInstalled.addListener(function (details) {
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.context == 'debug') {
 		console.log('debug: ',request.message);	
-	};
-
-	if (request.context == 'alert') {
+	}
+	else if (request.context == 'alert') {
 		alert(request.message);
-	};
-
-	if (request.context == 'background_post') {
+	} 
+	else if (request.context == 'background_post') {
 		 Linkastor.share_link(request.message.title, request.message.link, request.message.group_id, request.message.api_key, function(success, error){
         if (error) {
           Background.alert('Error while posting your link. Please log in again.');
           Storage.clear();
         }
       });
+	} 
+	else if (request.context == 'check_installed') {
+		sendResponse('Yep!');
+	}
+	else {
+		console.log('unexpected message received: ', request);
 	}
 });
 
