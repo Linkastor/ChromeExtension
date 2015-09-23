@@ -2,7 +2,7 @@ var oauth_callback = 'http://localhost:666/callback/';
 var oauth_consumer_key = 'kzqWOAo4EOMCb2uGPdihaHqjl';
 var oauth_consumer_secret = 'WFANcJ7WgFXQL1J1oqJZZAqaagMNkl6OHcONKNPV4hAKLG7M4y';
 
-var linkastor_url = 'https://linkastor.herokuapp.com';
+var linkastor_url = 'http://linkastor.com';
 
 var user_storage_key = 'com.linkastor.user';
 var selected_group_id_key = 'com.linkastor.selected_group_id';
